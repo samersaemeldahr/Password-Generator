@@ -1,10 +1,4 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
 
-
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 // Declare global variable
 var numbers = "0123456789";
@@ -15,18 +9,15 @@ var upper = "QWERTYUIOPASDFGHJKLZXCVBNM";
 var upperArray = upper.split("");
 var special = " !#$%&'()*+,-./:;<=>?@[]\"^_`{|}~";
 var specialArray = special.split("");
-var basket = [];
-
+var basket = "";
 
 
 //WHEN I click the button to generate a password
 //THEN I am presented with a series of prompts for password criteria
 var generatePassword = function() {
-  
   // setting character length
   var charLength = prompt("How many characters would you like your password to have?  Please choose between '8' and '128' characters.", "8");
   charLength = parseInt(charLength);
-  console.log('Character length is ' + charLength);
   
   if (isNaN(charLength) || charLength < 8 || charLength > 128) {
     return console.log(alert("The password must be between 8 to 128 characters."));
@@ -36,6 +27,7 @@ var generatePassword = function() {
   var lowerConfirm = confirm("Would you like to use lowercase letters in your password?");
   var upperConfirm = confirm("Would you like to use uppercase letters in your password?");
   var specialConfirm = confirm("Would you like to use special characters in your password?");
+
 
   if (numbersConfirm) {
   basket = basket.concat(numbers);
@@ -51,6 +43,10 @@ var generatePassword = function() {
 
   if (specialConfirm) {
     basket = basket.concat(special);
+  } 
+  
+  if (!lowerConfirm && !upperConfirm && !numbersConfirm && !specialConfirm) {
+    return alert("You password must at least have 1 type of characters to generate a password!\nPlease re-generate it.");
   }
 }
 
@@ -69,6 +65,16 @@ var generatePassword = function() {
 //WHEN all prompts are answered
 //THEN a password is generated that matches the selected criteria
 
+
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
+
+
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+
 //WHEN the password is generated
 //THEN the password is either displayed in an alert or written to the page
 //
@@ -78,5 +84,4 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
