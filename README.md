@@ -1,4 +1,4 @@
-# Horiseon Social Solution Services
+# Password Generator
 
 This website generates a custom password based on the user's criteria. 
 
