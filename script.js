@@ -77,4 +77,14 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+
+// Generate the password
+
+  function generatePassword() {
+    var randomPassword = "";
+    for (var i = 0; i < charLength; i++) {
+      randomPassword += basket[Math.floor(Math.random() * basket.length)]; 
+    }
+    return (randomPassword);
+    }
 }
